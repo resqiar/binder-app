@@ -1,13 +1,11 @@
-import { FlatList, View } from "react-native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { StackList } from "../types/StackList";
 import MainStatusBar from "../components/miscs/MainStatusBar";
 import ExtensionCard from "../components/card/ExtensionCard";
+import HomeHeader from "../components/header/HomeHeader";
+import { FlatList, View } from "react-native";
+import { NavigationType } from "../types/navigation";
 import { mockup } from "../constants/mockup";
 
-type Props = NativeStackScreenProps<StackList, "HomeScreen">;
-
-export default function HomeScreen(_props: Props) {
+export default function HomeScreen(props: NavigationType<"HomeScreen">) {
   return (
     <View className="flex-1">
       {/* CUSTOM STATUS BAR */}
@@ -19,8 +17,9 @@ export default function HomeScreen(_props: Props) {
         <View className="z-10">
           <FlatList
             data={mockup}
-            renderItem={({ item }) => <ExtensionCard value={item} />}
+            renderItem={({ item }) => <ExtensionCard rn={props} value={item} />}
             keyExtractor={(i) => i.id.toString()}
+            ListHeaderComponent={HomeHeader}
           />
         </View>
 
