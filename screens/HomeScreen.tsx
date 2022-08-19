@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import MainStatusBar from "../components/miscs/MainStatusBar";
-import ExtensionCard from "../components/card/ExtensionCard";
-import HomeHeader from "../components/header/HomeHeader";
 import { FlatList, View } from "react-native";
 import { NavigationType } from "../types/navigation";
 import { C_URL } from "../constants/url";
 import { IData } from "../constants/data";
+import MainStatusBar from "../components/miscs/MainStatusBar";
+import ExtensionCard from "../components/card/ExtensionCard";
+import HomeHeader from "../components/header/HomeHeader";
+import ExtCardSkeleton from "../components/skeleton/ExtCardSkeleton";
 
 export default function HomeScreen(props: NavigationType<"HomeScreen">) {
   // State to store backend request data
@@ -13,18 +14,20 @@ export default function HomeScreen(props: NavigationType<"HomeScreen">) {
 
   async function fetchData() {
     try {
-      // TIMEOUT TO SIMULATE NETWORK REQUEST
-      setTimeout(async () => {
-        const req = await fetch(`${C_URL.BACKEND_URL}/ext`);
-        const res = await req.json();
-        setData(res);
-      }, 5000);
+      // Fetch data from the server.
+      // Whenever data is available,
+      // push them to the defined state.
+      const req = await fetch(`${C_URL.BACKEND_URL}/ext`);
+      const res = await req.json();
+      setData(res);
     } catch (error: any) {
       console.error(error.message);
     }
   }
 
   useEffect(() => {
+    // As soon as the component mounted,
+    // fetch data from the server.
     fetchData();
   }, []);
 
@@ -42,6 +45,7 @@ export default function HomeScreen(props: NavigationType<"HomeScreen">) {
             renderItem={({ item }) => <ExtensionCard rn={props} value={item} />}
             keyExtractor={(i) => i.id.toString()}
             ListHeaderComponent={HomeHeader}
+            ListEmptyComponent={ExtCardSkeleton}
           />
         </View>
 
