@@ -1,7 +1,14 @@
 import { View } from "react-native";
 import { Placeholder, PlaceholderLine, Fade } from "rn-placeholder";
+import NotFoundInfo from "../miscs/NotFoundInfo";
 
-export default function ExtCardSkeleton() {
+interface Props {
+  isNotFound?: boolean;
+}
+
+export default function ExtCardSkeleton(props: Props) {
+  if (props.isNotFound) return <NotFoundInfo />;
+
   return (
     <View>
       <View className="bg-white mx-2 my-4 rounded-xl shadow-2xl">

@@ -5,4 +5,6 @@ export interface IData {
   image_url?: string | null;
   created_at: string;
   updated_at: string;
+  statusCode?: number;
+  message?: string;
 }

@@ -2,7 +2,12 @@ import { View, Text, Pressable, Alert, Platform } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import SearchInput from "../input/SearchInput";
 
-export default function HomeHeader() {
+interface Props {
+  onChangeText: (text: string) => void;
+  onSubmitEditing: () => void;
+}
+
+export default function HomeHeader(props: Props) {
   return (
     <View>
       <View className="flex flex-row px-4 py-5">
@@ -39,7 +44,10 @@ export default function HomeHeader() {
       </View>
 
       <View className="px-3 mt-2 mb-6">
-        <SearchInput />
+        <SearchInput
+          onChangeText={props.onChangeText}
+          onSubmitEditing={props.onSubmitEditing}
+        />
       </View>
     </View>
   );
