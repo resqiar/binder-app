@@ -5,18 +5,16 @@ import {
   StatusBar,
   Image,
   ScrollView,
-  TouchableOpacity,
   Pressable,
 } from "react-native";
 import { IMockup } from "../constants/mockup";
 import { NavigationType } from "../types/navigation";
-import { Ionicons } from "@expo/vector-icons";
 import ImageView from "react-native-image-viewing";
+import BackButton from "../components/button/BackButton";
 
 export default function DetailScreen(props: NavigationType<"DetailScreen">) {
   // Data passed from parent component
   const data: IMockup = props.route.params;
-  const statusBarHeight = StatusBar.currentHeight ?? 0;
 
   // State to control the fullscreen-image visibility
   const [visible, setIsVisible] = useState(false);
@@ -58,22 +56,7 @@ export default function DetailScreen(props: NavigationType<"DetailScreen">) {
           ) : undefined}
 
           {/* BACK NAVIGATION BUTTON */}
-          <TouchableOpacity
-            style={{
-              width: 40,
-              height: 40,
-              top: statusBarHeight + 10,
-              left: 10,
-              backgroundColor: "#fff",
-              position: "absolute",
-              borderRadius: 100,
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-            onPress={() => props.navigation.goBack()}
-          >
-            <Ionicons name="arrow-back" size={20} />
-          </TouchableOpacity>
+          <BackButton rn={props} />
         </View>
 
         <View className="bg-white px-4 py-6 rounded-b-2xl shadow-2xl">
