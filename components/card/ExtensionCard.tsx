@@ -1,9 +1,9 @@
 import { View, Text, Image, Pressable } from "react-native";
-import { IMockup } from "../../constants/mockup";
+import { IData } from "../../constants/data";
 import { NavigationType } from "../../types/navigation";
 
 interface Props {
-  value: IMockup;
+  value: IData;
   rn?: NavigationType<"HomeScreen">;
 }
 

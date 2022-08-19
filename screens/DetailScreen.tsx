@@ -7,14 +7,14 @@ import {
   ScrollView,
   Pressable,
 } from "react-native";
-import { IMockup } from "../constants/mockup";
 import { NavigationType } from "../types/navigation";
 import ImageView from "react-native-image-viewing";
 import BackButton from "../components/button/BackButton";
+import { IData } from "../constants/data";
 
 export default function DetailScreen(props: NavigationType<"DetailScreen">) {
   // Data passed from parent component
-  const data: IMockup = props.route.params;
+  const data: IData = props.route.params;
 
   // State to control the fullscreen-image visibility
   const [visible, setIsVisible] = useState(false);
