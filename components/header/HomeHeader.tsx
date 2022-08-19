@@ -6,7 +6,7 @@ export default function HomeHeader() {
   return (
     <View>
       <View className="flex flex-row px-4 py-5">
-        <Text className="flex-1 font-bold text-xl">Binder</Text>
+        <Text className="flex-1 font-bold text-xl text-white">Binder</Text>
         <Pressable
           android_ripple={{
             color: "#666",
@@ -20,7 +20,7 @@ export default function HomeHeader() {
           }
         >
           <Ionicons
-            style={{ paddingLeft: 10 }}
+            style={{ paddingLeft: 10, color: "#fff" }}
             name={
               Platform.OS === "ios"
                 ? "ios-information-circle-outline"
@@ -33,7 +33,9 @@ export default function HomeHeader() {
 
       <View className="px-4 mb-4">
         <Text className="text-slate-300">Welcome back, 🤓😎!</Text>
-        <Text className="font-bold text-lg">Looking for an extension?</Text>
+        <Text className="font-bold text-lg text-slate-200">
+          Looking for an extension?
+        </Text>
       </View>
 
       <View className="px-3 mt-2 mb-6">
