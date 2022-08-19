@@ -26,6 +26,10 @@ export default function HomeScreen(props: NavigationType<"HomeScreen">) {
   // When server give 404 message, this state will be updated
   const [notFound, setNotFound] = useState<boolean>(false);
 
+  // When the data is fetching from the server,
+  // update the loading state to display ActivityIndicator.
+  const [loading, setLoading] = useState<boolean>(false);
+
   async function onSearch() {
     // If there is no search text provided,
     // fallback the data to the initial state.
@@ -33,6 +37,9 @@ export default function HomeScreen(props: NavigationType<"HomeScreen">) {
       return await fetchAllData({
         setData: setData,
       });
+
+    // Set loading state to true
+    setLoading(true);
 
     // Fetch specific data with id
     // to the server, when found, update the data state,
@@ -43,6 +50,9 @@ export default function HomeScreen(props: NavigationType<"HomeScreen">) {
       setData: setData,
       setNotFound: setNotFound,
     });
+
+    // Set loading state to false
+    setLoading(false);
   }
 
   return (
@@ -62,6 +72,7 @@ export default function HomeScreen(props: NavigationType<"HomeScreen">) {
               <HomeHeader
                 onChangeText={(text) => setSearch(text)}
                 onSubmitEditing={onSearch}
+                isLoading={loading}
               />
             }
             ListEmptyComponent={<ExtCardSkeleton isNotFound={notFound} />}

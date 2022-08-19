@@ -5,6 +5,7 @@ import SearchInput from "../input/SearchInput";
 interface Props {
   onChangeText: (text: string) => void;
   onSubmitEditing: () => void;
+  isLoading?: boolean;
 }
 
 export default function HomeHeader(props: Props) {
@@ -47,6 +48,7 @@ export default function HomeHeader(props: Props) {
         <SearchInput
           onChangeText={props.onChangeText}
           onSubmitEditing={props.onSubmitEditing}
+          isLoading={props.isLoading}
         />
       </View>
     </View>
