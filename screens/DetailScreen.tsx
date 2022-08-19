@@ -31,7 +31,7 @@ export default function DetailScreen(props: NavigationType<"DetailScreen">) {
       />
 
       <View>
-        <View className="pb-2 w-full max-h-[400px]">
+        <View className="w-full max-h-[400px]">
           {/* IMAGE */}
           {data.image_url ? (
             <>
@@ -76,7 +76,7 @@ export default function DetailScreen(props: NavigationType<"DetailScreen">) {
           </TouchableOpacity>
         </View>
 
-        <View className="px-3 py-4">
+        <View className="bg-white px-4 py-6 rounded-b-2xl shadow-2xl">
           {/* ID */}
           <View>
             <Text className="text-lg font-bold">ID: {data.id}</Text>
