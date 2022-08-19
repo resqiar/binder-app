@@ -3,7 +3,7 @@
     "version": ">= 0.60.0"
   },
   "build": {
-    "alpha-v0.1": {
+    "release-v1.0.0": {
       "android": {
         "buildType": "apk"
       }
