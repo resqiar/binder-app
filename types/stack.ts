@@ -1,6 +1,7 @@
-import { IMockup } from "../constants/mockup";
+import { IData } from "../constants/data";
 
 export type StackList = {
   HomeScreen: undefined;
-  DetailScreen: IMockup;
+  DetailScreen: IData;
+  AboutScreen: undefined;
 };

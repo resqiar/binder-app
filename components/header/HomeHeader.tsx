@@ -1,8 +1,10 @@
-import { View, Text, Pressable, Alert, Platform } from "react-native";
+import { View, Text, Pressable, Platform } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import SearchInput from "../input/SearchInput";
+import { NavigationType } from "../../types/navigation";
 
 interface Props {
+  rn?: NavigationType<"HomeScreen">;
   onChangeText: (text: string) => void;
   onSubmitEditing: () => void;
   isLoading?: boolean;
@@ -18,12 +20,10 @@ export default function HomeHeader(props: Props) {
             color: "#666",
             borderless: true,
           }}
-          onPress={() =>
-            Alert.alert(
-              "App Status Info",
-              "This app status is still in the early stage of development"
-            )
-          }
+          onPress={() => {
+            if (!props.rn) return;
+            return props.rn.navigation.navigate("AboutScreen");
+          }}
         >
           <Ionicons
             style={{ paddingLeft: 10, color: "#fff" }}

@@ -70,6 +70,7 @@ export default function HomeScreen(props: NavigationType<"HomeScreen">) {
             keyExtractor={(i) => i.id.toString()}
             ListHeaderComponent={
               <HomeHeader
+                rn={props}
                 onChangeText={(text) => setSearch(text)}
                 onSubmitEditing={onSearch}
                 isLoading={loading}
