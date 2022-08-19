@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "modern-app",
-    "slug": "modern-app",
+    "name": "Binder",
+    "slug": "Binder",
+    "owner": "resdev.id",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,10 +25,21 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.resdev.id.binder"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "enableProguardInReleaseBuilds": true
+          },
+        }
+      ]
+    ]
   }
 }
