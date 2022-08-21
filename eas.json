@@ -8,9 +8,9 @@
         "buildType": "apk"
       }
     },
-    "preview2": {
+    "preview-build": {
       "android": {
-        "gradleCommand": ":app:assembleRelease"
+        "buildType": "apk"
       }
     },
     "preview3": {
