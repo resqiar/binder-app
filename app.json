@@ -2,6 +2,7 @@
   "expo": {
     "name": "Binder",
     "slug": "Binder",
+    "scheme": "binder",
     "owner": "resdev.id",
     "version": "1.0.0",
     "orientation": "portrait",
