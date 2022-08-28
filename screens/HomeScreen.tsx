@@ -76,7 +76,9 @@ export default function HomeScreen(props: NavigationType<"HomeScreen">) {
                 isLoading={loading}
               />
             }
-            ListEmptyComponent={<ExtCardSkeleton isNotFound={notFound} />}
+            ListEmptyComponent={
+              <ExtCardSkeleton count={2} isNotFound={notFound} />
+            }
           />
         </View>
 

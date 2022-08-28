@@ -19,6 +19,26 @@ export async function fetchAllData(props: IFetchData) {
   }
 }
 
+interface IFetchSpecificData {
+  id: number;
+  setData: Dispatch<SetStateAction<IData | undefined>>;
+}
+
+export async function fetchSpecificData(props: IFetchSpecificData) {
+  if (!props.setData) return;
+
+  try {
+    // Fetch data from the server.
+    // Whenever data is available,
+    // push them to the defined state.
+    const req = await fetch(`${C_URL.BACKEND_URL}/ext/${props.id}`);
+    const res = await req.json();
+    props.setData(res);
+  } catch (error: any) {
+    console.error(error.message);
+  }
+}
+
 interface IFetchSpecific extends IFetchData {
   searchText: string;
   setNotFound: Dispatch<SetStateAction<boolean>>;
