@@ -1,5 +1,6 @@
 import { View, TextInput, ActivityIndicator } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import ScanQRButton from "../button/ScanQrButton";
 
 interface Props {
   onChangeText: (text: string) => void;
@@ -27,6 +28,9 @@ export default function SearchInput(props: Props) {
         onChangeText={props.onChangeText}
         onSubmitEditing={props.onSubmitEditing}
       />
+
+      {/* SCAN QR CODE BUTTON */}
+      <ScanQRButton />
     </View>
   );
 }
