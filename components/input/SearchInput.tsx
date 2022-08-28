@@ -1,11 +1,13 @@
 import { View, TextInput, ActivityIndicator } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import ScanQRButton from "../button/ScanQrButton";
+import { NavigationType } from "../../types/navigation";
 
 interface Props {
   onChangeText: (text: string) => void;
   onSubmitEditing: () => void;
   isLoading?: boolean;
+  rn?: NavigationType<"HomeScreen">;
 }
 
 export default function SearchInput(props: Props) {
@@ -30,7 +32,7 @@ export default function SearchInput(props: Props) {
       />
 
       {/* SCAN QR CODE BUTTON */}
-      <ScanQRButton />
+      <ScanQRButton rn={props.rn} />
     </View>
   );
 }

@@ -49,6 +49,7 @@ export default function HomeHeader(props: Props) {
           onChangeText={props.onChangeText}
           onSubmitEditing={props.onSubmitEditing}
           isLoading={props.isLoading}
+          rn={props.rn}
         />
       </View>
     </View>

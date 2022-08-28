@@ -6,6 +6,7 @@ import HomeScreen from "../screens/HomeScreen";
 import AboutScreen from "./AboutScreen";
 import AboutHeaderRight from "../components/header/AboutHeaderRight";
 import * as Linking from "expo-linking";
+import ScannerScreen from "./ScannerScreen";
 
 const Stack = createNativeStackNavigator<StackList>();
 
@@ -19,6 +20,7 @@ export default function StackScreen() {
     config: {
       screens: {
         HomeScreen: "home",
+        ScannerScreen: "scan",
         AboutScreen: "about",
       },
     },
@@ -34,6 +36,7 @@ export default function StackScreen() {
       >
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="DetailScreen" component={DetailScreen} />
+        <Stack.Screen name="ScannerScreen" component={ScannerScreen} />
         <Stack.Screen
           name="AboutScreen"
           component={AboutScreen}
