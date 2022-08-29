@@ -11,6 +11,7 @@ import { NavigationType } from "../types/navigation";
 import ImageView from "react-native-image-viewing";
 import BackButton from "../components/button/BackButton";
 import { IData } from "../constants/data";
+import GoToScannerButton from "../components/button/GoToScannerButton";
 
 export default function DetailScreen(props: NavigationType<"DetailScreen">) {
   // Data passed from parent component
@@ -57,6 +58,9 @@ export default function DetailScreen(props: NavigationType<"DetailScreen">) {
 
           {/* BACK NAVIGATION BUTTON */}
           <BackButton rn={props} />
+
+          {/* GO TO SCANNER BUTTON */}
+          <GoToScannerButton rn={props} />
         </View>
 
         <View className="bg-white px-4 py-6 rounded-b-2xl shadow-2xl">
