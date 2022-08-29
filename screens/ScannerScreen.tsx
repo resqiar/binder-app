@@ -4,7 +4,7 @@ import RequestingCamera from "../components/miscs/RequestingCamera";
 import ExtCardSkeleton from "../components/skeleton/ExtCardSkeleton";
 import { BarCodeEvent, BarCodeScanner } from "expo-barcode-scanner";
 import { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, StatusBar } from "react-native";
 import { IData } from "../constants/data";
 import { fetchSpecificData } from "../libs/fetchData";
 import { isNumeric } from "../libs/isNumeric";
@@ -77,50 +77,64 @@ export default function ScannerScreen(props: NavigationType<"ScannerScreen">) {
   }
 
   return (
-    <View className="flex-1 px-2 py-4">
+    <View className="flex-1">
+      <StatusBar
+        barStyle="dark-content"
+        animated={true}
+        translucent={true}
+        backgroundColor="transparent"
+      />
+
       {/* BARCODE SCANNER */}
-      <View className="h-[500px] w-full items-center overflow-hidden rounded-2xl shadow-xl">
+      <View className="h-[500px] w-full items-center overflow-hidden">
         <BarCodeScanner
           onBarCodeScanned={data ? undefined : handleBarcodeScanner}
           style={{ height: 1000, width: 1000, borderRadius: 30 }}
         />
       </View>
 
-      {/* BARCODE SCANNER HELPER TEXT */}
-      <View className="py-2 items-center">
-        <Text className="text-slate-400">Scan the QR code</Text>
-      </View>
+      <View className="rounded-3xl flex-1 -mt-16 bg-white">
+        {/* BARCODE SCANNER HELPER TEXT */}
+        <View className="py-2 items-center">
+          <Text className="text-slate-400">Scan the QR code</Text>
+        </View>
 
-      {/* SKELETON */}
-      {loading ? <ExtCardSkeleton count={1} compact={true} /> : undefined}
+        {/* SKELETON */}
+        {loading ? <ExtCardSkeleton count={1} compact={true} /> : undefined}
 
-      {/* FOUND DATA TITLE AND RESET BUTTON */}
-      {data && !loading ? (
-        <View className="flex flex-row justify-between px-2 my-4">
-          <Text className="text-slate-300">
-            Found with id <Text>{data.id}</Text>
-          </Text>
+        {/* FOUND DATA TITLE AND RESET BUTTON */}
+        {data && !loading ? (
+          <View className="flex flex-row justify-between px-6 my-4">
+            <Text>
+              Found with id <Text>{data.id}</Text>
+            </Text>
 
-          <View className="flex items-center flex-row gap-2">
-            <Text className="text-slate-300">Reset search</Text>
-            <TouchableOpacity
-              onPress={() => {
-                setData(undefined);
-                setResult(undefined);
-              }}
-            >
-              <Ionicons name="md-reload-sharp" size={15} color="black" />
-            </TouchableOpacity>
+            <View className="flex items-center flex-row gap-2">
+              <Text>Reset</Text>
+              <TouchableOpacity
+                onPress={() => {
+                  setData(undefined);
+                  setResult(undefined);
+                }}
+              >
+                <Ionicons
+                  style={{ marginTop: 2 }}
+                  name="md-reload-sharp"
+                  size={15}
+                  color="black"
+                />
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-      ) : undefined}
+        ) : undefined}
 
-      {/* FOUND DATA CARD */}
-      {data && !loading ? (
-        <View className="py-1">
-          <ExtensionCard value={data} rn={props} compact={true} />
-        </View>
-      ) : undefined}
+        {/* FOUND DATA CARD */}
+        {data && !loading ? (
+          <View className="py-1 px-2">
+            <ExtensionCard value={data} rn={props} compact={true} />
+          </View>
+        ) : undefined}
+      </View>
     </View>
   );
 }

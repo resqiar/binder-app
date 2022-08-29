@@ -32,16 +32,19 @@ export default function ExtensionCard(props: Props) {
 
           <View className="px-4 py-4 absolute bg-[#00000099] w-full h-full rounded-xl">
             {/* ID */}
-            <Text className="font-bold">ID: {props.value.id}</Text>
+            <Text className="font-bold text-white">ID: {props.value.id}</Text>
 
             {/* TITLE */}
-            <Text className="font-bold text-lg" numberOfLines={2}>
+            <Text className="font-bold text-lg text-white" numberOfLines={2}>
               {props.value.title}
             </Text>
 
             {/* OPTIONAL DESCRIPTION */}
             {props.value.description ? (
-              <Text className="text-justify mt-2" numberOfLines={3}>
+              <Text
+                className="text-justify mt-2 text-slate-200"
+                numberOfLines={3}
+              >
                 {props.value.description}
               </Text>
             ) : undefined}

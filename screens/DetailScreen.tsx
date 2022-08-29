@@ -23,7 +23,7 @@ export default function DetailScreen(props: NavigationType<"DetailScreen">) {
   return (
     <ScrollView className="flex-1">
       <StatusBar
-        barStyle="dark-content"
+        barStyle="light-content"
         animated={true}
         translucent={true}
         backgroundColor="transparent"
