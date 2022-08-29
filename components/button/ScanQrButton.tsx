@@ -1,6 +1,6 @@
 import { TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { NavigationType } from "../../types/navigation";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 interface Props {
   rn?: NavigationType<any>;
@@ -27,7 +27,7 @@ export default function ScanQRButton(props: Props) {
         return props.rn.navigation.navigate("ScannerScreen");
       }}
     >
-      <Ionicons name="camera" size={24} color="black" />
+      <MaterialCommunityIcons name="qrcode-scan" size={20} color="black" />
     </TouchableOpacity>
   );
 }
