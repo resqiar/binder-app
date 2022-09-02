@@ -6,12 +6,16 @@ import {
   Image,
   ScrollView,
   Pressable,
+  TouchableOpacity,
+  Linking,
 } from "react-native";
 import { NavigationType } from "../types/navigation";
 import ImageView from "react-native-image-viewing";
 import BackButton from "../components/button/BackButton";
 import { IData } from "../constants/data";
 import GoToScannerButton from "../components/button/GoToScannerButton";
+import YTPlayer from "../components/miscs/YTPlayer";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function DetailScreen(props: NavigationType<"DetailScreen">) {
   // Data passed from parent component
@@ -56,6 +60,13 @@ export default function DetailScreen(props: NavigationType<"DetailScreen">) {
             </>
           ) : undefined}
 
+          {/* YOUTUBE PLAYER */}
+          {data.youtube_url ? (
+            <View>
+              <YTPlayer url={data.youtube_url} />
+            </View>
+          ) : undefined}
+
           {/* BACK NAVIGATION BUTTON */}
           <BackButton rn={props} />
 
@@ -81,6 +92,32 @@ export default function DetailScreen(props: NavigationType<"DetailScreen">) {
             ) : undefined}
           </View>
         </View>
+
+        {/* OPEN VIDEO INSIDE YOUTUBE NATIVE APP */}
+        {data.youtube_url ? (
+          <View className="flex px-4 my-6">
+            <TouchableOpacity
+              style={{
+                width: "60%",
+                backgroundColor: "#fff",
+                borderRadius: 100,
+                alignItems: "center",
+                justifyContent: "center",
+                elevation: 5,
+                paddingVertical: 12,
+                display: "flex",
+                flexDirection: "row",
+              }}
+              onPress={() => {
+                if (!data.youtube_url) return;
+                Linking.openURL(data.youtube_url);
+              }}
+            >
+              <Ionicons name="logo-youtube" size={20} color="red" />
+              <Text className="ml-3 text-sm">Play inside YouTube</Text>
+            </TouchableOpacity>
+          </View>
+        ) : undefined}
       </View>
     </ScrollView>
   );
